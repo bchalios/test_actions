@@ -28,3 +28,10 @@ jobs:
 
       - name: Print the SHA
         run: echo $ARTIFACT_SHA
+
+  test_across_jobs:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Print the SHA from different job
+        run: echo $ARTIFACT_SHA
