@@ -20,10 +20,10 @@ jobs:
           if [[ "${{github.event.pull_request.head.sha}}" != "" ]]
           then
             echo "PR"
-            echo "ARTIFACT_SHA=$(echo ${{github.event.pull_request.head.sha}}" >> $GITHUB_ENV
+            echo "ARTIFACT_SHA=$(echo ${{github.event.pull_request.head.sha}})" >> $GITHUB_ENV
           else
             echo "Push"
-            echo "ARTIFACT_SHA=$(echo ${{github.sha}}" >> $GITHUB_ENV
+            echo "ARTIFACT_SHA=$(echo ${{github.sha}})" >> $GITHUB_ENV
           fi
 
       - name: Print the SHA
