@@ -18,7 +18,7 @@ jobs:
       - name: Print PR SHA
         run: |
           echo "${{github.event.pull_request.head.sha}}"
-          if [[ ${{github.event.pull_request.head.sha}} != "" ]]
+          if [[ "${{github.event.pull_request.head.sha}}" != "" ]]
           then
             echo "PR"
           else
