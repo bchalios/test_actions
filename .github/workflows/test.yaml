@@ -19,6 +19,7 @@ jobs:
         run: |
           echo "${{github.event.pull_request.head.sha}}"
           if [[ ${{github.event.pull_request.head.sha}} ]]
+          then
             echo "PR"
           else
             ehco "Push"
