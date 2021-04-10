@@ -3,13 +3,12 @@ name: Test PRs
 on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
+  push:
+    branches:
+      - master
 
 jobs:
   test:
-    if: |
-      github.event_name == 'pull_request' &&
-      (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'synchronize') ||
-      github.event.action == 'closed' && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
@@ -18,4 +17,10 @@ jobs:
 
       - name: Print PR SHA
         run: |
-          echo ${{github.event.pull_request.head.sha}}
+          echo "${{github.event.pull_request.head.sha}}"
+          if [[ ${{github.event.pull_request.head.sha}} ]]
+          then
+            echo "PR"
+          else
+            ehco "Push"
+          fi
